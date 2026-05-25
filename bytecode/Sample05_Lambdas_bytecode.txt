@@ -1,0 +1,170 @@
+Compiled from "Sample05_Lambdas.java"
+public class Sample05_Lambdas {
+  public Sample05_Lambdas();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static int apply(int, int, Sample05_Lambdas$MathOperation);
+    Code:
+       0: aload_2
+       1: iload_0
+       2: iload_1
+       3: invokeinterface #7,  3            // InterfaceMethod Sample05_Lambdas$MathOperation.operate:(II)I
+       8: ireturn
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: invokedynamic #13,  0             // InvokeDynamic #0:operate:()LSample05_Lambdas$MathOperation;
+       5: astore_1
+       6: invokedynamic #16,  0             // InvokeDynamic #1:operate:()LSample05_Lambdas$MathOperation;
+      11: astore_2
+      12: getstatic     #17                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      15: iconst_5
+      16: iconst_3
+      17: aload_1
+      18: invokestatic  #23                 // Method apply:(IILSample05_Lambdas$MathOperation;)I
+      21: invokedynamic #29,  0             // InvokeDynamic #2:makeConcatWithConstants:(I)Ljava/lang/String;
+      26: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      29: getstatic     #17                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      32: iconst_5
+      33: iconst_3
+      34: aload_2
+      35: invokestatic  #23                 // Method apply:(IILSample05_Lambdas$MathOperation;)I
+      38: invokedynamic #39,  0             // InvokeDynamic #3:makeConcatWithConstants:(I)Ljava/lang/String;
+      43: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      46: getstatic     #17                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      49: bipush        10
+      51: iconst_2
+      52: invokedynamic #40,  0             // InvokeDynamic #4:operate:()LSample05_Lambdas$MathOperation;
+      57: invokestatic  #23                 // Method apply:(IILSample05_Lambdas$MathOperation;)I
+      60: invokedynamic #41,  0             // InvokeDynamic #5:makeConcatWithConstants:(I)Ljava/lang/String;
+      65: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      68: bipush        10
+      70: anewarray     #42                 // class java/lang/Integer
+      73: dup
+      74: iconst_0
+      75: iconst_1
+      76: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      79: aastore
+      80: dup
+      81: iconst_1
+      82: iconst_2
+      83: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      86: aastore
+      87: dup
+      88: iconst_2
+      89: iconst_3
+      90: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      93: aastore
+      94: dup
+      95: iconst_3
+      96: iconst_4
+      97: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     100: aastore
+     101: dup
+     102: iconst_4
+     103: iconst_5
+     104: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     107: aastore
+     108: dup
+     109: iconst_5
+     110: bipush        6
+     112: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     115: aastore
+     116: dup
+     117: bipush        6
+     119: bipush        7
+     121: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     124: aastore
+     125: dup
+     126: bipush        7
+     128: bipush        8
+     130: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     133: aastore
+     134: dup
+     135: bipush        8
+     137: bipush        9
+     139: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     142: aastore
+     143: dup
+     144: bipush        9
+     146: bipush        10
+     148: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     151: aastore
+     152: invokestatic  #48                 // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+     155: astore_3
+     156: aload_3
+     157: invokeinterface #54,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+     162: invokedynamic #60,  0             // InvokeDynamic #6:test:()Ljava/util/function/Predicate;
+     167: invokeinterface #64,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     172: invokedynamic #70,  0             // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     177: invokeinterface #73,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+     182: invokestatic  #77                 // Method java/util/stream/Collectors.toList:()Ljava/util/stream/Collector;
+     185: invokeinterface #83,  2           // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+     190: checkcast     #55                 // class java/util/List
+     193: astore        4
+     195: getstatic     #17                 // Field java/lang/System.out:Ljava/io/PrintStream;
+     198: aload         4
+     200: invokestatic  #87                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     203: invokedynamic #92,  0             // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     208: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     211: aload_3
+     212: invokeinterface #54,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+     217: iconst_0
+     218: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     221: invokedynamic #95,  0             // InvokeDynamic #9:apply:()Ljava/util/function/BinaryOperator;
+     226: invokeinterface #98,  3           // InterfaceMethod java/util/stream/Stream.reduce:(Ljava/lang/Object;Ljava/util/function/BinaryOperator;)Ljava/lang/Object;
+     231: checkcast     #42                 // class java/lang/Integer
+     234: invokevirtual #102                // Method java/lang/Integer.intValue:()I
+     237: istore        5
+     239: getstatic     #17                 // Field java/lang/System.out:Ljava/io/PrintStream;
+     242: iload         5
+     244: invokedynamic #106,  0            // InvokeDynamic #10:makeConcatWithConstants:(I)Ljava/lang/String;
+     249: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     252: return
+
+  private static java.lang.Integer lambda$main$4(java.lang.Integer);
+    Code:
+       0: aload_0
+       1: invokevirtual #102                // Method java/lang/Integer.intValue:()I
+       4: aload_0
+       5: invokevirtual #102                // Method java/lang/Integer.intValue:()I
+       8: imul
+       9: invokestatic  #44                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      12: areturn
+
+  private static boolean lambda$main$3(java.lang.Integer);
+    Code:
+       0: aload_0
+       1: invokevirtual #102                // Method java/lang/Integer.intValue:()I
+       4: iconst_2
+       5: irem
+       6: ifne          13
+       9: iconst_1
+      10: goto          14
+      13: iconst_0
+      14: ireturn
+
+  private static int lambda$main$2(int, int);
+    Code:
+       0: iload_0
+       1: iload_1
+       2: isub
+       3: ireturn
+
+  private static int lambda$main$1(int, int);
+    Code:
+       0: iload_0
+       1: iload_1
+       2: imul
+       3: ireturn
+
+  private static int lambda$main$0(int, int);
+    Code:
+       0: iload_0
+       1: iload_1
+       2: iadd
+       3: ireturn
+}

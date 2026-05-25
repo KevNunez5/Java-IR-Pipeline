@@ -1,0 +1,94 @@
+Compiled from "Sample03_Exceptions.java"
+public class Sample03_Exceptions {
+  public Sample03_Exceptions();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static int divide(int, int);
+    Code:
+       0: iload_1
+       1: ifne          14
+       4: new           #7                  // class java/lang/ArithmeticException
+       7: dup
+       8: ldc           #9                  // String División por cero no permitida
+      10: invokespecial #11                 // Method java/lang/ArithmeticException."<init>":(Ljava/lang/String;)V
+      13: athrow
+      14: iload_0
+      15: iload_1
+      16: idiv
+      17: ireturn
+
+  public static void validateAge(int);
+    Code:
+       0: iload_0
+       1: iflt          11
+       4: iload_0
+       5: sipush        150
+       8: if_icmple     25
+      11: new           #14                 // class Sample03_Exceptions$InvalidAgeException
+      14: dup
+      15: iload_0
+      16: invokedynamic #16,  0             // InvokeDynamic #0:makeConcatWithConstants:(I)Ljava/lang/String;
+      21: invokespecial #20                 // Method Sample03_Exceptions$InvalidAgeException."<init>":(Ljava/lang/String;)V
+      24: athrow
+      25: getstatic     #21                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      28: iload_0
+      29: invokedynamic #27,  0             // InvokeDynamic #1:makeConcatWithConstants:(I)Ljava/lang/String;
+      34: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      37: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: bipush        10
+       2: iconst_2
+       3: invokestatic  #33                 // Method divide:(II)I
+       6: istore_1
+       7: getstatic     #21                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      10: iload_1
+      11: invokedynamic #39,  0             // InvokeDynamic #2:makeConcatWithConstants:(I)Ljava/lang/String;
+      16: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      19: iconst_5
+      20: iconst_0
+      21: invokestatic  #33                 // Method divide:(II)I
+      24: istore_2
+      25: getstatic     #21                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      28: ldc           #40                 // String Bloque finally ejecutado
+      30: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      33: goto          74
+      36: astore_1
+      37: getstatic     #21                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      40: aload_1
+      41: invokevirtual #42                 // Method java/lang/ArithmeticException.getMessage:()Ljava/lang/String;
+      44: invokedynamic #46,  0             // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      49: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      52: getstatic     #21                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      55: ldc           #40                 // String Bloque finally ejecutado
+      57: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      60: goto          74
+      63: astore_3
+      64: getstatic     #21                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      67: ldc           #40                 // String Bloque finally ejecutado
+      69: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      72: aload_3
+      73: athrow
+      74: bipush        25
+      76: invokestatic  #49                 // Method validateAge:(I)V
+      79: bipush        -5
+      81: invokestatic  #49                 // Method validateAge:(I)V
+      84: goto          103
+      87: astore_1
+      88: getstatic     #21                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      91: aload_1
+      92: invokevirtual #53                 // Method Sample03_Exceptions$InvalidAgeException.getMessage:()Ljava/lang/String;
+      95: invokedynamic #54,  0             // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     100: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     103: return
+    Exception table:
+       from    to  target type
+           0    25    36   Class java/lang/ArithmeticException
+           0    25    63   any
+          36    52    63   any
+          74    84    87   Class Sample03_Exceptions$InvalidAgeException
+}

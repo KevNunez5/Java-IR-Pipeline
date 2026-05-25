@@ -1,0 +1,60 @@
+Compiled from "Sample02_OOP.java"
+public class Sample02_OOP {
+  public Sample02_OOP();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: iconst_3
+       1: anewarray     #7                  // class Sample02_OOP$Shape
+       4: dup
+       5: iconst_0
+       6: new           #9                  // class Sample02_OOP$Circle
+       9: dup
+      10: ldc           #11                 // String Red
+      12: ldc2_w        #13                 // double 5.0d
+      15: invokespecial #15                 // Method Sample02_OOP$Circle."<init>":(Ljava/lang/String;D)V
+      18: aastore
+      19: dup
+      20: iconst_1
+      21: new           #18                 // class Sample02_OOP$Rectangle
+      24: dup
+      25: ldc           #20                 // String Blue
+      27: ldc2_w        #22                 // double 4.0d
+      30: ldc2_w        #24                 // double 6.0d
+      33: invokespecial #26                 // Method Sample02_OOP$Rectangle."<init>":(Ljava/lang/String;DD)V
+      36: aastore
+      37: dup
+      38: iconst_2
+      39: new           #9                  // class Sample02_OOP$Circle
+      42: dup
+      43: ldc           #29                 // String Green
+      45: ldc2_w        #31                 // double 3.0d
+      48: invokespecial #15                 // Method Sample02_OOP$Circle."<init>":(Ljava/lang/String;D)V
+      51: aastore
+      52: astore_1
+      53: aload_1
+      54: astore_2
+      55: aload_2
+      56: arraylength
+      57: istore_3
+      58: iconst_0
+      59: istore        4
+      61: iload         4
+      63: iload_3
+      64: if_icmpge     90
+      67: aload_2
+      68: iload         4
+      70: aaload
+      71: astore        5
+      73: getstatic     #33                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      76: aload         5
+      78: invokevirtual #39                 // Method Sample02_OOP$Shape.describe:()Ljava/lang/String;
+      81: invokevirtual #43                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      84: iinc          4, 1
+      87: goto          61
+      90: return
+}

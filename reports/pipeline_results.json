@@ -1,0 +1,288 @@
+[
+  {
+    "name": "Sample01_Basic",
+    "category": "Básico",
+    "description": "variables, loops, aritmética",
+    "javac": {
+      "step": "javac",
+      "success": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    "javap": {
+      "step": "javap",
+      "success": true,
+      "opcodes_detected": {
+        "invokedynamic": [
+          "11: invokedynamic #13,  0             // InvokeDynamic #0:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "25: invokedynamic #23,  0             // InvokeDynamic #1:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "39: invokedynamic #24,  0             // InvokeDynamic #2:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "53: invokedynamic #25,  0             // InvokeDynamic #3:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "68: invokedynamic #32,  0             // InvokeDynamic #4:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "107: invokedynamic #37,  0             // InvokeDynamic #5:makeConcatWithConstants:(D)Ljava/lang/String;"
+        ],
+        "invokevirtual": [
+          "16: invokevirtual #17                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "30: invokevirtual #17                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "44: invokevirtual #17                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "58: invokevirtual #17                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "73: invokevirtual #17                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "112: invokevirtual #17                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V"
+        ]
+      },
+      "output_lines": 113
+    },
+    "llvm_ir": {
+      "step": "llvm_ir",
+      "success": true,
+      "ir_path": "C:\\Users\\Nivek\\Downloads\\Last Edmodo Go\\Codigo\\JAVA_IR\\java_llvm_pipeline_v2\\llvmir\\Sample01_Basic.ll",
+      "ir_lines": 33,
+      "issues": [],
+      "decisions": [
+        "Loop for → bloques basic block (entry/loop/body/exit)",
+        "Array Java → pointer + length como parámetros separados"
+      ],
+      "validate_error": null
+    }
+  },
+  {
+    "name": "Sample02_OOP",
+    "category": "OOP",
+    "description": "clases, herencia, polimorfismo",
+    "javac": {
+      "step": "javac",
+      "success": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    "javap": {
+      "step": "javap",
+      "success": true,
+      "opcodes_detected": {
+        "invokevirtual": [
+          "78: invokevirtual #39                 // Method Sample02_OOP$Shape.describe:()Ljava/lang/String;",
+          "81: invokevirtual #43                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V"
+        ]
+      },
+      "output_lines": 60
+    },
+    "llvm_ir": {
+      "step": "llvm_ir",
+      "success": true,
+      "ir_path": "C:\\Users\\Nivek\\Downloads\\Last Edmodo Go\\Codigo\\JAVA_IR\\java_llvm_pipeline_v2\\llvmir\\Sample02_OOP.ll",
+      "ir_lines": 16,
+      "issues": [
+        "Virtual dispatch requiere vtable manual — no hay soporte nativo en LLVM IR",
+        "Herencia múltiple necesita struct anidados — complejidad alta"
+      ],
+      "decisions": [
+        "Clases Java → identified structs en IR",
+        "Métodos virtuales → function pointers en vtable struct"
+      ],
+      "validate_error": null
+    }
+  },
+  {
+    "name": "Sample03_Exceptions",
+    "category": "Excepciones",
+    "description": "try/catch/finally",
+    "javac": {
+      "step": "javac",
+      "success": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    "javap": {
+      "step": "javap",
+      "success": true,
+      "opcodes_detected": {
+        "invokedynamic": [
+          "16: invokedynamic #16,  0             // InvokeDynamic #0:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "29: invokedynamic #27,  0             // InvokeDynamic #1:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "11: invokedynamic #39,  0             // InvokeDynamic #2:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "44: invokedynamic #46,  0             // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;",
+          "95: invokedynamic #54,  0             // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;"
+        ],
+        "invokevirtual": [
+          "34: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "16: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "30: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "41: invokevirtual #42                 // Method java/lang/ArithmeticException.getMessage:()Ljava/lang/String;",
+          "49: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "57: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "69: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "92: invokevirtual #53                 // Method Sample03_Exceptions$InvalidAgeException.getMessage:()Ljava/lang/String;",
+          "100: invokevirtual #28                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V"
+        ],
+        "athrow": [
+          "13: athrow",
+          "24: athrow",
+          "73: athrow"
+        ]
+      },
+      "output_lines": 94
+    },
+    "llvm_ir": {
+      "step": "llvm_ir",
+      "success": true,
+      "ir_path": "C:\\Users\\Nivek\\Downloads\\Last Edmodo Go\\Codigo\\JAVA_IR\\java_llvm_pipeline_v2\\llvmir\\Sample03_Exceptions.ll",
+      "ir_lines": 16,
+      "issues": [
+        "try/catch → invoke + landingpad: requiere ABI C++ (@__cxa_throw, @__cxa_begin_catch)",
+        "Excepciones custom Java no mapean directamente a personality functions de LLVM"
+      ],
+      "decisions": [
+        "throw → branch a bloque landingpad con @__cxa_throw stub",
+        "finally → duplicación de bloques (normal + unwind path)"
+      ],
+      "validate_error": null
+    }
+  },
+  {
+    "name": "Sample04_Collections",
+    "category": "Colecciones",
+    "description": "generics, ArrayList, HashMap",
+    "javac": {
+      "step": "javac",
+      "success": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    "javap": {
+      "step": "javap",
+      "success": true,
+      "opcodes_detected": {
+        "invokedynamic": [
+          "42: invokedynamic #67,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;",
+          "60: invokedynamic #82,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;",
+          "173: invokedynamic #113,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",
+          "229: invokedynamic #122,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;"
+        ],
+        "invokevirtual": [
+          "47: invokevirtual #71                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "65: invokevirtual #71                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "178: invokevirtual #71                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "234: invokevirtual #71                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V"
+        ],
+        "invokeinterface": [
+          "1: invokeinterface #7,  1            // InterfaceMethod java/util/List.isEmpty:()Z",
+          "21: invokeinterface #20,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;",
+          "31: invokeinterface #26,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;",
+          "38: invokeinterface #30,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z",
+          "47: invokeinterface #35,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;",
+          "58: invokeinterface #39,  2           // InterfaceMethod java/lang/Comparable.compareTo:(Ljava/lang/Object;)I",
+          "23: invokeinterface #52,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z",
+          "84: invokeinterface #88,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
+          "98: invokeinterface #88,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
+          "112: invokeinterface #88,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
+          "119: invokeinterface #98,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;",
+          "124: invokeinterface #102,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;",
+          "131: invokeinterface #30,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z",
+          "140: invokeinterface #35,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;",
+          "155: invokeinterface #107,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;",
+          "165: invokeinterface #110,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;",
+          "195: invokeinterface #52,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z",
+          "204: invokeinterface #52,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z",
+          "213: invokeinterface #52,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z"
+        ],
+        "checkcast": [
+          "26: checkcast     #24                 // class java/lang/Comparable",
+          "52: checkcast     #24                 // class java/lang/Comparable",
+          "145: checkcast     #105                // class java/util/Map$Entry",
+          "160: checkcast     #63                 // class java/lang/String",
+          "226: checkcast     #63                 // class java/lang/String"
+        ],
+        "athrow": [
+          "18: athrow"
+        ]
+      },
+      "output_lines": 141
+    },
+    "llvm_ir": {
+      "step": "llvm_ir",
+      "success": true,
+      "ir_path": "C:\\Users\\Nivek\\Downloads\\Last Edmodo Go\\Codigo\\JAVA_IR\\java_llvm_pipeline_v2\\llvmir\\Sample04_Collections.ll",
+      "ir_lines": 17,
+      "issues": [
+        "Type erasure: generics desaparecen en IR — List<Integer> = List<Object> = i8**",
+        "HashMap requiere función hash, buckets, manejo de colisiones — no hay primitiva en IR"
+      ],
+      "decisions": [
+        "Generics → punteros opacos (i8*) con bitcast en cada acceso",
+        "Boxing Integer/Double → struct { i32 value } o i8* con tag de tipo"
+      ],
+      "validate_error": null
+    }
+  },
+  {
+    "name": "Sample05_Lambdas",
+    "category": "Lambdas",
+    "description": "lambda, Stream API, invokedynamic",
+    "javac": {
+      "step": "javac",
+      "success": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    "javap": {
+      "step": "javap",
+      "success": true,
+      "opcodes_detected": {
+        "invokedynamic": [
+          "0: invokedynamic #13,  0             // InvokeDynamic #0:operate:()LSample05_Lambdas$MathOperation;",
+          "6: invokedynamic #16,  0             // InvokeDynamic #1:operate:()LSample05_Lambdas$MathOperation;",
+          "21: invokedynamic #29,  0             // InvokeDynamic #2:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "38: invokedynamic #39,  0             // InvokeDynamic #3:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "52: invokedynamic #40,  0             // InvokeDynamic #4:operate:()LSample05_Lambdas$MathOperation;",
+          "60: invokedynamic #41,  0             // InvokeDynamic #5:makeConcatWithConstants:(I)Ljava/lang/String;",
+          "162: invokedynamic #60,  0             // InvokeDynamic #6:test:()Ljava/util/function/Predicate;",
+          "172: invokedynamic #70,  0             // InvokeDynamic #7:apply:()Ljava/util/function/Function;",
+          "203: invokedynamic #92,  0             // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;",
+          "221: invokedynamic #95,  0             // InvokeDynamic #9:apply:()Ljava/util/function/BinaryOperator;",
+          "244: invokedynamic #106,  0            // InvokeDynamic #10:makeConcatWithConstants:(I)Ljava/lang/String;"
+        ],
+        "invokevirtual": [
+          "26: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "43: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "65: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "208: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "234: invokevirtual #102                // Method java/lang/Integer.intValue:()I",
+          "249: invokevirtual #33                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V",
+          "1: invokevirtual #102                // Method java/lang/Integer.intValue:()I",
+          "5: invokevirtual #102                // Method java/lang/Integer.intValue:()I",
+          "1: invokevirtual #102                // Method java/lang/Integer.intValue:()I"
+        ],
+        "invokeinterface": [
+          "3: invokeinterface #7,  3            // InterfaceMethod Sample05_Lambdas$MathOperation.operate:(II)I",
+          "157: invokeinterface #54,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;",
+          "167: invokeinterface #64,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;",
+          "177: invokeinterface #73,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;",
+          "185: invokeinterface #83,  2           // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;",
+          "212: invokeinterface #54,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;",
+          "226: invokeinterface #98,  3           // InterfaceMethod java/util/stream/Stream.reduce:(Ljava/lang/Object;Ljava/util/function/BinaryOperator;)Ljava/lang/Object;"
+        ],
+        "checkcast": [
+          "190: checkcast     #55                 // class java/util/List",
+          "231: checkcast     #42                 // class java/lang/Integer"
+        ]
+      },
+      "output_lines": 170
+    },
+    "llvm_ir": {
+      "step": "llvm_ir",
+      "success": true,
+      "ir_path": "C:\\Users\\Nivek\\Downloads\\Last Edmodo Go\\Codigo\\JAVA_IR\\java_llvm_pipeline_v2\\llvmir\\Sample05_Lambdas.ll",
+      "ir_lines": 13,
+      "issues": [
+        "invokedynamic (lambdas/streams) no tiene equivalente en LLVM IR estándar",
+        "Stream API requiere toda la biblioteca java.util.stream — dependencia enorme",
+        "Closures capturan variables del scope → struct de entorno capturado necesario"
+      ],
+      "decisions": [
+        "Lambda → struct { i8* fn_ptr, i8* env_ptr } (closure manual)",
+        "Stream.filter().map() → loop expandido manualmente en IR"
+      ],
+      "validate_error": null
+    }
+  }
+]
